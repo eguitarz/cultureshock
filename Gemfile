@@ -45,3 +45,5 @@ gem 'devise', github: 'plataformatec/devise'
 gem 'google-analytics-rails'
 gem 'tzinfo-data'
 gem 'validates_formatting_of'
+
+gem 'haml-rails'
