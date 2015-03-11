@@ -38,3 +38,10 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'bundler'
+
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'devise', github: 'plataformatec/devise'
+gem 'google-analytics-rails'
+gem 'tzinfo-data'
+gem 'validates_formatting_of'
