@@ -19,7 +19,7 @@ namespace :cs do
     end
   end
 
-  task :fill_positions => :environment do
+  task :fill_locations => :environment do
     GEOCODE_URL = 'http://maps.googleapis.com/maps/api/geocode/json?address='
 
     Contact.all.each do |contact|
@@ -30,6 +30,10 @@ namespace :cs do
           location = geocode['results'][0]['geometry']['location']
           contact.update_attributes :latitude => location['lat'], :longitude => location['lng']
         rescue
+          rescue_url = URI(GEOCODE_URL + "#{URI.encode(contact.country)}")
+          geocode = JSON.parse Net::HTTP.get(rescue_url)
+          location = geocode['results'][0]['geometry']['location']
+          contact.update_attributes :latitude => location['lat'], :longitude => location['lng']
         end
       end
     end
